@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ডাউনলোড ও যোগাযোগ</title>
+    <!-- Font Awesome 6 (ফ্রি) আইকনের জন্য -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(145deg, #f0f4fa 0%, #d9e2ef 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .card {
+            max-width: 550px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 48px;
+            box-shadow: 0 30px 50px rgba(0, 20, 40, 0.25), 0 10px 20px rgba(0,0,0,0.1);
+            padding: 35px 30px;
+            border: 1px solid rgba(255,255,255,0.7);
+            transition: 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 40px 60px rgba(0, 25, 60, 0.3);
+        }
+
+        .download-section {
+            text-align: center;
+            padding: 20px 0 30px 0;
+            border-bottom: 2px dashed rgba(0, 80, 150, 0.2);
+        }
+
+        .download-heading {
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: #0a2a44;
+            letter-spacing: 1px;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .download-heading i {
+            font-size: 2.5rem;
+            color: #1e6df2;
+            filter: drop-shadow(0 6px 8px rgba(0,80,200,0.3));
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+            background: #1a5bbf;
+            background: linear-gradient(135deg, #1a5bbf, #104099);
+            padding: 18px 45px;
+            border-radius: 80px;
+            color: white;
+            font-size: 1.7rem;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 18px 25px -8px #0a2e66, 0 4px 8px rgba(0,0,0,0.2);
+            transition: all 0.25s ease;
+            border: 2px solid rgba(255,255,255,0.2);
+            cursor: pointer;
+            margin: 10px auto 5px;
+        }
+
+        .download-btn i {
+            font-size: 2.5rem;
+            filter: drop-shadow(2px 4px 4px rgba(0,0,0,0.3));
+        }
+
+        .download-btn span {
+            font-size: 1.5rem;
+            letter-spacing: 1.5px;
+        }
+
+        .download-btn:hover {
+            background: linear-gradient(135deg, #1f6ae0, #154baa);
+            transform: scale(1.04) translateY(-3px);
+            box-shadow: 0 26px 30px -8px #062252;
+            border-color: rgba(255,255,255,0.6);
+        }
+
+        .download-btn:active {
+            transform: scale(0.98);
+            box-shadow: 0 10px 18px -5px #0a2a55;
+        }
+
+        .admin-panel {
+            margin-top: 35px;
+            text-align: center;
+        }
+
+        .admin-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #1b3a5e;
+            background: rgba(255,255,255,0.5);
+            display: inline-block;
+            padding: 8px 30px;
+            border-radius: 60px;
+            backdrop-filter: blur(4px);
+            margin-bottom: 30px;
+            border: 1px solid white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        .admin-title i {
+            margin-right: 12px;
+            color: #0f3d74;
+        }
+
+        .contact-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+
+        .contact-item {
+            background: white;
+            border-radius: 100px;
+            padding: 8px 25px 8px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 10px 20px rgba(0, 30, 70, 0.15);
+            border: 1px solid rgba(255,255,255,0.9);
+            transition: 0.15s;
+            backdrop-filter: blur(4px);
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 15px 28px rgba(0, 35, 80, 0.22);
+            transform: scale(1.01);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(145deg, #dde7f5, #ffffff);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #13489e;
+            box-shadow: inset 2px 2px 5px rgba(255,255,255,0.8), 3px 5px 10px rgba(0,20,40,0.15);
+            border: 1px solid white;
+        }
+
+        .contact-details {
+            flex: 1;
+            text-align: right;
+            padding: 0 15px;
+        }
+
+        .contact-details a {
+            display: block;
+            text-decoration: none;
+            font-size: 1.6rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: 0.2s;
+            line-height: 1.4;
+        }
+
+        .phone-link {
+            color: #0b5e2e;
+        }
+
+        .phone-link i {
+            font-size: 1.3rem;
+            margin-left: 8px;
+            color: #0e7939;
+        }
+
+        .phone-link:hover {
+            color: #0a8645;
+            transform: translateX(-5px);
+        }
+
+        .email-link {
+            color: #aa3a3a;
+            word-break: break-all;
+        }
+
+        .email-link i {
+            font-size: 1.3rem;
+            margin-left: 8px;
+            color: #c04a4a;
+        }
+
+        .email-link:hover {
+            color: #cf4f4f;
+            transform: translateX(-5px);
+        }
+
+        .contact-details small {
+            display: block;
+            font-size: 0.95rem;
+            color: #3d5270;
+            margin-top: 3px;
+            opacity: 0.8;
+            font-weight: 500;
+        }
+
+        .footer-note {
+            margin-top: 30px;
+            font-size: 0.95rem;
+            color: #365277;
+            border-top: 1px dashed rgba(0,80,120,0.2);
+            padding-top: 18px;
+            text-align: center;
+        }
+        /* মোবাইলে সুন্দর দেখাতে */
+        @media (max-width: 450px) {
+            .card { padding: 25px 15px; }
+            .download-btn { padding: 15px 30px; gap: 10px; }
+            .download-btn i { font-size: 2rem; }
+            .download-btn span { font-size: 1.2rem; }
+            .contact-details a { font-size: 1.3rem; }
+            .contact-icon { width: 50px; height: 50px; font-size: 1.7rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <!-- ডাউনলোড আইকন ও লিংক বিভাগ -->
+        <div class="download-section">
+            <div class="download-heading">
+                <i class="fas fa-cloud-download-alt"></i>
+                <span>ডাউনলোড করুন</span>
+            </div>
+            <!-- এই বাটন/আইকনে ক্লিক করলে ড্রাইভ লিংক ওপেন হবে -->
+            <a href="https://drive.google.com/file/d/19YQm_gaYXbh91Aw5KMQxkd1xoISpwtvD/view?usp=drivesdk" 
+               target="_blank" 
+               class="download-btn" 
+               title="ফাইল দেখতে বা ডাউনলোড করতে ক্লিক করুন">
+                <i class="fas fa-download"></i>
+                <span>ফাইল লিংক</span>
+                <i class="fas fa-external-link-alt" style="font-size: 1.5rem; opacity: 0.8;"></i>
+            </a>
+            <p style="margin-top: 15px; color: #2c405c;"><i class="fas fa-arrow-up" style="margin-right: 5px;"></i> আইকনে ক্লিক করে ড্রাইভ ওপেন হবে</p>
+        </div>
+
+        <!-- এডমিন এর সাথে কথা বলার মাধ্যম (কল ও ইমেইল) -->
+        <div class="admin-panel">
+            <div class="admin-title">
+                <i class="fas fa-user-tie"></i> প্রশাসক
+            </div>
+
+            <div class="contact-cards">
+                <!-- ফোন / কল অপশন: নাম্বারে ক্লিক করলে ডায়াল প্যাড খুলবে (tel: লিংক) -->
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="contact-details">
+                        <a href="tel:01869628620" class="phone-link">
+                            01869 628620 <i class="fas fa-phone"></i>
+                        </a>
+                        <small>কল করতে ক্লিক করুন</small>
+                    </div>
+                </div>
+
+                <!-- ইমেইল অপশন: ক্লিক করলে ডিফল্ট ইমেইল অ্যাপ খুলবে (mailto:) -->
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-details">
+                        <a href="mailto:tarekjamilm66@gmail.com" class="email-link">
+                            tarekjamilm66@gmail.com <i class="fas fa-paper-plane"></i>
+                        </a>
+                        <small>ইমেইল পাঠাতে ক্লিক করুন</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ছোট্ট নোট: আরও সহজ যোগাযোগ -->
+            <div class="footer-note">
+                <i class="fas fa-clock" style="margin-right: 8px;"></i> ২৪/৭ প্রশাসকের সাথে কথা বলুন
+            </div>
+        </div>
+    </div>
+
+    <!-- কোনো জটিল স্ক্রিপ্ট ছাড়াই সরল HTML + inline tel/mailto কাজ করবে -->
+</body>
+</html>
